@@ -7,10 +7,10 @@ const createList = (songs) => {
     songlist.innerHTML = ''
     for (const song of songs) {
         songlist.innerHTML +=
-            `<li class="list-group-item">
+            `<li class="list-group-item bg-transparent w-100">
                         <div class="row">
                             <div class="col">
-                                <button class="btn btn-outline-secondary rounded-circle songlist-playbutton" onclick="playMusic('${song.preview}')"><ion-icon class="d-none" name="pause-outline"></ion-icon><ion-icon class="" name="play-outline"></ion-icon><audio src="${song.preview}"></audio></button>
+                                <button class="btn btn-outline-light rounded-circle songlist-playbutton" onclick="playMusic('${song.preview}')"><ion-icon class="d-none" name="pause-outline"></ion-icon><ion-icon class="" name="play-outline"></ion-icon><audio src="${song.preview}"></audio></button>
                                 <span class="mx-2 songlist-songduration">${(parseFloat(song.duration)/60).toFixed(2)}</span>
                                 <img class="mx-2 songlist-albumcover" src="${song.album.cover_small}" alt="">
                                 <span class="mx-2 songlist-artist-name">${song.artist.name}</span>
@@ -28,7 +28,7 @@ const createAlbumList = (songs) => {
     for (const song of songs) {
         album.innerHTML +=
             `<div class="col-3">
-            <div class="card">
+            <div class="card bg-transparent">
                 <img src="${song.album.cover_medium}" class="card-img-top" alt="${song.album.title}">
                 <div class="card-body">
                     <h5 class="card-title">${song.album.title}</h5>

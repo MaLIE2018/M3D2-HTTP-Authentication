@@ -15,32 +15,36 @@
 </head>
 
 <body>
-
-    <div class="container-md">
+    <div class="jumbotron jumbotron-fluid mb-0 position-relative">
+        <div class="container">
+            <h1 class="display-4">Welcome to Eeeezer</h1>
+            <p class="lead">Maybe somebody find this useful</p>
+        </div>
+    </div>
+    <div class="container-md mt-3">
         <div class="row">
-
-            <nav class="navbar navbar-light bg-ligh flex-grow-1">
+            <nav class="navbar navbar-dark bg-ligh flex-grow-1">
                 <span class="navbar-brand mb-0 h1">Welcome to Eeeezer</span>
                 <form class="form-inline my-2 my-lg-0 ml-auto">
                     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="listAlbumButton btn btn-success" onclick="getSearchResult(event,document.querySelector('input[type=search]').value)">List albums</button>
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit" onclick="getSearchResult(event,document.querySelector('input[type=search]').value)">Search</button>
+                    <button class="listAlbumButton btn btn btn-outline-light" onclick="getSearchResult(event,document.querySelector('input[type=search]').value)">List albums</button>
+                    <button class="btn btn btn-outline-light my-2 my-sm-0 ml-2" type="submit" onclick="getSearchResult(event,document.querySelector('input[type=search]').value)">Search</button>
                 </form>
             </nav>
 
 
         </div>
         <div class="container-songlist col overflow-auto">
-            <div class="row d-flex align-items-center">
+            <div class="header row d-flex align-items-center position-fixed">
                 <h2 class="ml-3">Search results </h2>
                 <h6 class="mb-0 ml-2">Number of albums<span class="count ml-3">0</span></h6>
 
             </div>
-            <div class="row">
-                <ul class="songlist list-group mt-5">
+            <div class="row d-flex">
+                <ul class="songlist list-group mt-5 w-100">
                 </ul>
             </div>
-            <div class="container-albumlist row">
+            <div class="container-albumlist row d-flex">
             </div>
         </div>
     </div>

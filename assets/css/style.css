@@ -1,3 +1,33 @@
+body {
+    background: linear-gradient(180deg, rgba(32, 58, 83, 1) 0%, rgba(115, 110, 110, 0.9724090319721639) 80%);
+    background-attachment: fixed;
+    color: #F8F9FA;
+}
+
 .container-songlist {
     height: 50vh;
+}
+
+.jumbotron {
+    /* background: transparent; */
+    background-image: url(/assets/img/bg.jpg);
+    background-size: 50%;
+    background-color: transparent;
+    color: rgb(107, 107, 107);
+}
+
+.jumbotron::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    filter: blur(5px);
+    opacity: 0.8;
+    left: 0;
+    background-color: #3B4B5D;
+    width: 100%;
+    height: 50px;
+}
+
+.header {
+    z-index: 1;
 }
