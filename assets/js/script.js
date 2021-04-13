@@ -11,9 +11,10 @@ const createList = (songs) => {
                         <div class="row">
                             <div class="col">
                                 <button class="btn btn-outline-light rounded-circle songlist-playbutton" ]
-                                onclick="playMusic('${song.preview}')"><ion-icon class="d-none" name="pause-outline">
-                                </ion-icon><ion-icon class="" name="play-outline">
-                                </ion-icon></button>
+                                onclick="playMusic(event,'${song.preview}')">
+                                <ion-icon class="songlist-stopbutton d-none" name="pause-outline"></ion-icon>
+                                <ion-icon class="songlist-playbutton" name="play-outline"></ion-icon>
+                                </button>
                                 <span class="mx-2 songlist-songduration">${(parseFloat(song.duration)/60).toFixed(2)}</span>
                                 <img class="mx-2 songlist-albumcover" src="${song.album.cover_small}" alt="">
                                 <span class="mx-2 songlist-artist-name">${song.artist.name}</span>
@@ -74,8 +75,23 @@ const count = () => {
 
 }
 
-const playMusic = (url) => {
-    audio = new Audio(url).play()
+const playMusic = (event, url) => {
+    if (event.currentTarget.children[0].classList.contains("d-none")) { //stopbutton [0]
+        if (event.currentTarget.children[1].classList.contains("played")) {
+            audio.play()
+        } else {
+            audio = new Audio(url)
+            audio.play()
+        }
+        event.currentTarget.children[1].classList.add("d-none")
+        event.currentTarget.children[1].classList.add("played") // playbutton[]
+        event.currentTarget.children[0].classList.remove("d-none")
+    } else {
+        audio.pause()
+        event.currentTarget.children[1].classList.remove("d-none")
+        event.currentTarget.children[0].classList.add("d-none")
+    }
+    // 
 }
 
 const stopMusic = (url) => {
