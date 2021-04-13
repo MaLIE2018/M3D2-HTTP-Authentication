@@ -8,6 +8,14 @@ body {
     height: 50vh;
 }
 
+.songlist-playbutton {
+    transition: all 0.2s ease-in-out
+}
+
+.songlist-stopbutton {
+    transition: all 0.2s ease-in-out
+}
+
 .jumbotron {
     /* background: transparent; */
     background-image: url(/assets/img/bg.jpg);

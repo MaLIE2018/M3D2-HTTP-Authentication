@@ -32,7 +32,7 @@ const createAlbumList = (songs) => {
     for (const song of songs) {
         album.innerHTML +=
             `<div class="col-3">
-            <div class="card bg-transparent">
+            <div class="card bg-transparent" id="${song.album.id}">
                 <img src="${song.album.cover_medium}" class="card-img-top" alt="${song.album.title}">
                 <div class="card-body">
                     <h5 class="card-title">${song.album.title}</h5>
@@ -69,9 +69,20 @@ const getSearchResult = (event, keyword) => {
 
 }
 
+
+
 const count = () => {
     const count = document.querySelector(".count")
-    count.innerHTML = album.children.length
+    console.log('count:', count)
+    const cards = document.querySelectorAll(".card")
+    let arr = []
+    for (const el of cards) {
+        arr.push(el.id)
+    }
+    console.log(arr);
+
+    arr = arr.filter((value, index) => arr.indexOf(value) === index)
+    count.innerHTML = arr.length
 
 }
 
@@ -92,8 +103,4 @@ const playMusic = (event, url) => {
         event.currentTarget.children[0].classList.add("d-none")
     }
     // 
-}
-
-const stopMusic = (url) => {
-    new Audio(url).play()
 }
