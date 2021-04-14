@@ -1,6 +1,7 @@
 const album = document.querySelector('.container-albumlist')
 const songlist = document.querySelector('.songlist')
 let audio = ''
+let uniqueAlbums = []
 
 const createList = (songs) => {
     album.innerHTML = ''
@@ -30,8 +31,10 @@ const createAlbumList = (songs) => {
     album.innerHTML = ''
     songlist.innerHTML = ''
     for (const song of songs) {
-        album.innerHTML +=
-            `<div class="col-3">
+        if (uniqueAlbums.indexOf(song.album.id) === -1) {
+            uniqueAlbums.push(song.album.id)
+            album.innerHTML +=
+                `<div class="col-3">
             <div class="card bg-transparent" id="${song.album.id}">
                 <img src="${song.album.cover_medium}" class="card-img-top" alt="${song.album.title}">
                 <div class="card-body">
@@ -39,6 +42,7 @@ const createAlbumList = (songs) => {
                 </div>
             </div>
         </div>`
+        }
     }
     count()
 }
@@ -73,16 +77,7 @@ const getSearchResult = (event, keyword) => {
 
 const count = () => {
     const count = document.querySelector(".count")
-    console.log('count:', count)
-    const cards = document.querySelectorAll(".card")
-    let arr = []
-    for (const el of cards) {
-        arr.push(el.id)
-    }
-    console.log(arr);
-
-    arr = arr.filter((value, index) => arr.indexOf(value) === index)
-    count.innerHTML = arr.length
+    count.innerHTML = uniqueAlbums.length
 
 }
 
